@@ -1,6 +1,6 @@
 FROM centos
 
 RUN yum install -y epel-release && \
-    yum install -y make git golang && \
+    yum install -y make git golang which && \
     git clone https://github.com/kubernetes/kubernetes.git && \
     cd kubernetes && make && make install
