@@ -1,5 +1,6 @@
-FROM golang:1.6.4
+FROM centos
 
-RUN go get -d k8s.io/kubernetes && \
-    cd $GOPATH/src/k8s.io/kubernetes && \
-    make
+RUN yum install -y epel-release && \
+    yum install -y make git golang
+    git clone https://github.com/kubernetes/kubernetes.git && \
+    cd kubernetes && make && make install
