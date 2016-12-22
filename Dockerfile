@@ -1,11 +1,5 @@
-# Google Kubernetes
+FROM golang:1.6.4
 
-FROM centos:latest
-
-ADD ./src /
-
-RUN chmod +x /usr/local/sbin/start.sh
-
-VOLUME ["/target"]
-
-ENTRYPOINT ["/usr/local/sbin/start.sh"]
+RUN go get -d k8s.io/kubernetes && \
+    cd $GOPATH/src/k8s.io/kubernetes && \
+    make
